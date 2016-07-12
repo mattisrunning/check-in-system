@@ -2,7 +2,8 @@
   "app": {
     "bufferTime": 300000,
     "routes": [
-      {"url": "/user", "file": "app/user/routes"}
+      {"url": "/api/user", "file": "app/user/routes"},
+      {"url": "/checkin", "file": "app/pages/checkin/routes"}
     ]
   },
   "mongo": {
