@@ -22,8 +22,10 @@ router.get('/studentId/:id', function(req, res) {
         output.error = 'Student ID not found';
         res.status(output.status).json(output);
       } else {
-        // All good
-        res.end();
+        output.user = {
+          id: user._id
+        }
+        res.status(output.status).json(output);
       }
     }
   });
@@ -43,7 +45,7 @@ router.post('/checkin' , function(req, res) {
         res.status(output.status).json(output);
       } else {
         if(user) {
-          scheduleModel.checkin(user._id, now, function() {
+          scheduleModel.canCheckin(user._id, now, function() {
             console.log('done');
             res.send(`${now}`);
           });

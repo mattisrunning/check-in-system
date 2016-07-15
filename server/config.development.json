@@ -4,6 +4,9 @@
     "routes": [
       {"url": "/api/user", "file": "app/user/routes"},
       {"url": "/checkin", "file": "app/pages/checkin/routes"}
+    ],
+    "redirects": [
+      {"from": "/", "to": "/checkin"}
     ]
   },
   "mongo": {

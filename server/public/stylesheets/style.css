@@ -14,6 +14,11 @@ a {
   text-align: center;
 }
 
+#checkin-container h3 {
+  font-size: 2vw;
+  margin: 0;
+}
+
 
 #logo {
   width: 55vw;

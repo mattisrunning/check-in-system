@@ -7,11 +7,12 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var nconf = require('nconf');
 var expressLayouts = require('express-ejs-layouts');
+var nconf = require('nconf');
+var i18n = require("i18n");
 //var fileUpload = require('express-fileupload');
 
+global.appRoot = path.resolve(__dirname);
 var app = express();
-
-var nconf = require('nconf');
 var env = (process.env.NODE_ENV !== undefined) ? process.env.NODE_ENV.trim() : 'development';
 
 nconf.argv()
@@ -19,7 +20,6 @@ nconf.argv()
    .file({ file: `./config.${env}.json` });
 
 var mongoConfig = nconf.get('mongo');
-
 var mongoose = require('mongoose');
 mongoose.connect(mongoConfig.url);
 mongoose.connection
@@ -29,6 +29,12 @@ mongoose.connection
   })
   .on('open', function() {
     console.log('Connected to Mongo:', mongoConfig.url);
+  });
+
+  i18n.configure({
+      locales:['en'],
+      directory: __dirname + '/locales',
+      register: global
   });
 
 // view engine setup
@@ -47,8 +53,16 @@ app.use(cors());
 app.use(expressLayouts);
 //app.use(fileUpload()); // Not necessarily used for the fileupload, but to handle FormData submissions
 
-var appRoutes = nconf.get('app').routes;
+var appRedirects = nconf.get('app').redirects;
+console.log('Setting up redirects');
+appRedirects.forEach(function(item) {
+  app.get(item.from, function(req, res) {
+    res.redirect(item.to);
+  });
+});
+
 console.log('Setting up routes');
+var appRoutes = nconf.get('app').routes;
 appRoutes.forEach(function(item) {
   console.log(item.url, `${__dirname}/${item.file}`);
   app.use(item.url, require(`${__dirname}/${item.file}`));
