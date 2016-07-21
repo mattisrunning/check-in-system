@@ -1,0 +1,6 @@
+module.exports = {
+  'CHECKIN_NO_SHIFTS': 0,
+  'CHECKIN_NORMAL': 1,
+  'CHECKIN_LATE': 2,
+  'CHECKIN_NOT_ALLOWED': 3
+}
