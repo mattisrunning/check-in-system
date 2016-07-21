@@ -1,0 +1,12 @@
+{
+  "CHECKIN_LATE": "You are late for your <strong>%s</strong> shift.",
+  "CHECKIN_TOO_LATE": "You cannot check-in shortly before the end of your shift.",
+  "CHECKIN_NORMAL": "%s",
+  "CHECKIN_NO_SHIFTS": "You have no shifts today.",
+  "CHECKIN_TOO_EARLY": "You cannot check-in until %s",
+  "TIME_MORNING": "Good morning!",
+  "TIME_LUNCH": "Just in time for lunch!",
+  "TIME_AFTERNOON": "Good afternoon!",
+  "TIME_EVENING": "Good evening!",
+  "TIME_NIGHT": "Welcome to overtime."
+}

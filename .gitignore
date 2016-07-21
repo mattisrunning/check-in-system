@@ -1,4 +1,4 @@
-portalCheckIn/node_modules/
-portalCheckIn/.idea/
+server/node_modules/
+server/.idea/
 .idea/
 .npm-debug.log
