@@ -29,27 +29,26 @@ schema.statics.canCheckOut = function(userId, currentDate, callback) {
 /**
  * Determines if a checkin is valid
  * @param  {Number}   studentId   Student ID
- * @param  {Date}     currentDate Date object with current time
- * @param  {Function} callback    callback function
- * @return {[type]}               [description]
+ * @param  {Date}     currentDate Date object with current time. Gets converted to Date object if it is moment object
+ * @return {Promise}  Returns a promise with information on the status of checking in. Also includes shift information if available.
  */
 schema.statics.canCheckIn = function(userId, currentDate) {
-  // if (callback === undefined || typeof callback !== 'function') {
-  //     throw new Error('Callback not provided');
-  // }
-
-  var response = {status: 0, allowed: false, message: ''}
+  var response = {status: 0, allowed: false, message: '', shifts: []}
   var start = moment().utc().startOf('day');
   var end = moment().utc().startOf('day').add(1, 'days'); // There should be a shorter way to do this
   var that = this;
-  console.log(currentDate);
+
+  // Convert currentDate to javascript Date object if it's an instance of moment
+  if(currentDate instanceof moment) {
+    currentDate = currentDate.toDate();
+  }
 
   return new Promise(function(resolve, reject) {
     var aggregation = [
       // Find all schedules belonging to the user for the day
       {
         $match: {
-        	start: {$gte: start.toDate()},
+        	start: {$gte: start.toDate()}, // These two moment objects need to be converted to javascript Date object for mongoose
         	end: {$lte: end.toDate()},
         	"user._id": new mongoose.Types.ObjectId(userId)
         }
@@ -89,7 +88,7 @@ schema.statics.canCheckIn = function(userId, currentDate) {
         } else { // Checkin is late
           response.allowed = true;
           response.status = scheduleConst.CHECKIN_LATE;
-          response.message = __('CHECKIN_LATE');
+          response.message = __('CHECKIN_LATE', moment(shift.start).format('h:mmA'));
         }
 
       } else { // No shift found for current checkin time
@@ -97,6 +96,7 @@ schema.statics.canCheckIn = function(userId, currentDate) {
         response.message = __('CHECKIN_NO_SHIFTS');
       }
 
+      response.shifts = shifts;
       resolve(response);
     });
   });
