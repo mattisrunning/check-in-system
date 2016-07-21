@@ -1,0 +1,39 @@
+{
+  "app": {
+    "bufferTime": 300000,
+    "routes": [
+      {"url": "/api/user", "file": "app/user/routes"},
+      {"url": "/checkin", "file": "app/pages/checkin/routes"}
+    ],
+    "redirects": [
+      {"from": "/", "to": "/checkin"}
+    ]
+  },
+  "mongo": {
+    "url": "mongodb://localhost/portalCheckinDev"
+  },
+  "session": {
+    "secret": "Q#gQYLnuULStzJsDUc8t%nuD98XB$T1!"
+  },
+  "jwt": {
+    "secret": "O1JeUd48WjQb^^xzoM8mXuCAJc2W!7o1"
+  },
+  "google": {
+    "calendar": {
+      "id": "1t8dl0sqarrudmiqutl36er5bo@group.calendar.google.com",
+      "scopes": ["https://www.googleapis.com/auth/calendar.readonly"]
+    },
+    "serviceAccount": {
+      "type": "service_account",
+      "project_id": "nifty-formula-136521",
+      "private_key_id": "11d71b70d00c82d6ffa7714a820031ac651a7216",
+      "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC5a7wOpCaC8ihL\nZ6Pu+IoOb4nEBhPe0Aev2v+2vlVy3Qelm/KVDg0owcDdgP7KVCbALh2lkxzF0JmP\nxsFZRdP4LmRpQpFP5+7+3vFrxuQv3gtSoNU0mmQhqkKFqaU8vfobM7yc9YeuXjBB\noK5MrEINh1K0Yuf2Gb4ufzCrMYQnUKA1mYtyO2+5NOPrWQmwP5FZ5DSTtJkCHHQG\nehNRYbToUPlmKG9CR1h/mUOXHwFb5cKkugf4ibBCCJJ8xohdiKttNV1HCDns2xrk\neid5K34hIDfHzm3uXUE3WvKmz/zRKMzhLVAlOgF9RSFtxeCmajimmWqrT6PnbDNV\nxI1KyF7pAgMBAAECggEAa3JTuoRC0NS0puV66KrbjXvy8EW5U/9mxO/6CJKI/5O3\nr68LxnYrB/gm4/SxMNvMzMasZVs3bCXyJo+9URcWuxVfGGP7wrsbElRsv9C0QEzC\ncPJEOkRRS/TWsY/Z8bYA7axwWuAo7NEl05HiDwovCJnnQiKiWkkWnOkVcc6yzvh8\nGa9sgZtfZeoj5KODDNp6MDFeOpLh7SxzcTlh+ttAgbrsucHST1atdWsayiCWhwSJ\n/8ScV4KWX8tx34RRYNHkSlwy5KtiwyZwxsDjmBd3zeLqBHuWrsgQPvOUV0NDut5E\ndMOiGpgpfwOzTX/RnLdKgzVoB29CClLm51871gXHNQKBgQDfQFthdfpCWxEG+kev\npEa/tu3clGr5u2rRjpXgq5SOPzSqYQVPdayQTCNolIQUONHGNiWLB7ZoGHL1ggH0\nj0Bd5Cw0LWugihRNLGORrjQo4RNoUc531k2aSYOvp0OTTTCus/IszQmDU79cCYkV\nd0zr/kHdh2iYwNb9BfXT3/jYLwKBgQDUnr8cHMKYnSaN0Xau8jtHAUcLED87JWeY\nTiHvwzsNdNar/++vDKuhA/CXwtxIKY/4w0hH+7SlKhPmXkTzwwsij2qIDbZMpMFe\n83G9gq7NJ8Ovfii1hSviA12lkmHE5rsAo0OSZJWNV3C8vB/y0uR9/bPtZRsDSyqO\nRa6FgO/cZwKBgDWdZBS825QyAJ3XX33sCt2h1fACaMp+2wFmp9HkAvJCdahxUnAp\nx36D+oD0IeAlYSOj/1IrUQAg1wLk7QlJmeCymncRbWaJoqSCA4uJ9ZbXrux/sQEQ\no2RpQUne9piakhVyu7dMqnsykqNM2vIfy4ZlcnX8Pf9pWHg9hTMT99QbAoGBAJbc\nsJNc4MJytxlnZ4PIgkDmaicydvsblj7eKXw7FVp97ZgLOGEHZ3wPFJZKAAz/2JTU\n0yOoOEv86DPL7bbcTLlP83Hn8NK/ECm0KJ8j663LqjCKHo51mGZ8puTFUbPpVwSj\n0107G1Y3ldmEzlJ4SwIOkq090QXsPpzGWoeFriu/AoGAB5S0Dl3ykXaEjbqOcWm7\nBSg/8CM2fSssAAHUejUE1YQ5rbwb/wqUJK9riKMZVzMa6Q4KGa+FXl2U0dwu2o29\n4K9Fyf9/iAjAvmX3+9s98fLsxNt+bW9yDxGDW7iFSN6uChrQyRtsEO18lB7qROyp\na+DK77RYLbejbivbn0akXtU=\n-----END PRIVATE KEY-----\n",
+      "client_email": "testcalendar@nifty-formula-136521.iam.gserviceaccount.com",
+      "client_id": "115478666382182517265",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://accounts.google.com/o/oauth2/token",
+      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/testcalendar%40nifty-formula-136521.iam.gserviceaccount.com"
+    }
+  }
+}

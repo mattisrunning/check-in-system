@@ -1,0 +1,19 @@
+
+<nav id="checkin-dashboard">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" title="Back">
+    <i class="material-icons">arrow_back</i>
+  </button>
+</nav>
+
+<div class="demo-card-event mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title mdl-card--expand">
+    <p><%= checkinStatus.message %></p>
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" <%= (!checkinStatus.allowed) ? 'disabled' : '' %>>
+      CheckIn
+    </button>
+  </div>
+</div>
+
+<%= title %>

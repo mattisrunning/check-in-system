@@ -1,0 +1,64 @@
+<img src="/images/portal_logo.svg" id="logo" />
+
+<h3>Start by entering your Student ID below</h3>
+<form action="#" id="checkin-form">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" id="studentId-input-container" style="zoom: 350%;">
+        <label class="mdl-button mdl-js-button mdl-button--icon" for="studentId-input">
+            <i class="material-icons">dialpad</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+            <input class="mdl-textfield__input" type="number" name="studentId" id="studentId-input" placeholder="Student ID #" autocomplete="off">
+            <label class="mdl-textfield__label"></label>
+            <span class="mdl-textfield__error" id="checkin-error-message"></span>
+        </div>
+    </div>
+</form>
+
+
+<script>
+var studentIdInputContainer;
+var checkinForm;
+var checkinErrorMessageContainer;
+var studentIdInput;
+
+    $(function() {
+        studentIdInputContainer = $('#studentId-input-container');
+        checkinForm = $('#checkin-form');
+        checkinErrorMessageContainer = $('#checkin-error-message');
+        studentIdInput = $('#studentId-input');
+
+        $('#studentId-input').on('keydown', function(e) {
+          if(!/[0-9]/.test(e.key)) {
+            return true;
+          }
+
+          return (this.value.length < 8);
+        });
+
+        $('#studentId-input').on('keyup', function(e) {
+          if(this.value.length >= 8) {
+            checkinForm.trigger('submit');
+          } else {
+            $(this).parent().removeClass('shake');
+          }
+        });
+
+        checkinForm.on('submit', function() {
+          var studentId = studentIdInput.val();
+          $.ajax({
+            url: `/api/user/studentId/${studentId}`,
+            method: 'GET'
+          })
+          .fail(function(resp) {
+            checkinErrorMessageContainer.html(resp.responseJSON.error);
+            studentIdInputContainer.addClass('is-invalid');
+            studentIdInputContainer.find('.mdl-textfield__expandable-holder').addClass('shake');
+          })
+          .then(function(resp) {
+            location.href = `/checkin/${resp.user.id}`;
+          });
+
+          return false;
+        });
+    });
+</script>
