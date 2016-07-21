@@ -18,7 +18,8 @@ var schema = mongoose.Schema({
     hasParkingPass: Boolean,
     officeKeys: [String],
     dateActivated:Date,
-    dateDeactivated:Date
+    dateDeactivated:Date,
+    notes: String
 });
 
 module.exports = mongoose.model("user", schema);

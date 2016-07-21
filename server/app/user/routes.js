@@ -9,7 +9,7 @@ var output = {
 }
 
 router.get('/studentId/:id', function(req, res) {
-  var studentId = req.params.id;
+  var studentId = parseInt(req.params.id);
   userModel.findOne({studentId}, function(err, user) {
     if(err) {
       console.error(err);
