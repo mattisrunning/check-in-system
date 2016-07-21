@@ -1,0 +1,6 @@
+{
+  "CHECKIN_LATE": "You will be late checking in.",
+  "CHECKIN_TOO_LATE": "You cannot check in shortly before the end of your shift.",
+  "CHECKIN_NORMAL": "You can now check in.",
+  "CHECKIN_NO_SHIFTS": "You have no shifts today."
+}
