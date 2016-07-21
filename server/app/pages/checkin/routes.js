@@ -19,14 +19,16 @@ router.get('/:userId', function(req, res) {
       } else {
         var now = (req.body.time) ? new Date(req.body.time) : new Date();
         scheduleModel.canCheckIn(user.id, now)
-        .then(function(checkinStatus) {
-          pageData.checkinStatus = checkinStatus;
-          pageData.title = `Welcome, ${user.name}`;
-          res.render(`${viewBase}/dashboard`, pageData);
-        })
-        .catch(function(err) {
-          console.log(err);
-        });
+          .then(function(checkinStatus) {
+            console.log(checkinStatus);
+            pageData.checkinStatus = checkinStatus;
+            pageData.title = `Welcome, ${user.name}`;
+
+            res.render(`${viewBase}/dashboard`, pageData);
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
       }
     }
   });
