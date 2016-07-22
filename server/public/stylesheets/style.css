@@ -1,9 +1,14 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #eee;
 }
 
 a {
   color: #00B7FF;
+}
+
+main {
+  padding: 10px;
 }
 
 #main-container {
@@ -18,7 +23,6 @@ a {
   font-size: 2vw;
   margin: 0;
 }
-
 
 #logo {
   width: 55vw;
